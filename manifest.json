@@ -5,7 +5,7 @@
     "orientation": "portrait",
     "icons": [
         {
-            "src": "img/reset.png",
+            "src": "img/balanca.png",
             "sizes": "512x512",
             "type": "image/png"
         }

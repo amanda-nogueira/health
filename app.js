@@ -45,7 +45,7 @@ function calcular(){
 
         //Cálculo do FCM
         fcm = 208 - (0.7 * idade)
-        document.getElementById('freq').innerHTML = `FCM: ${fcm.toFixed(0)}`
+        document.getElementById('freq').innerHTML = `${fcm.toFixed(0)}`
         //Consumo da água
         litros = (peso * 35) / 1000
         document.getElementById('agua').innerHTML = `${litros.toFixed(1)} litros/dia`
