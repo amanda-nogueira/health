@@ -45,16 +45,32 @@ function calcular(){
 
         //Cálculo do FCM
         fcm = 208 - (0.7 * idade)
-        document.getElementById('freq').innerHTML = fcm
-
+        document.getElementById('freq').innerHTML = `FCM: ${fcm.toFixed(0)}`
         //Consumo da água
         litros = (peso * 35) / 1000
         document.getElementById('agua').innerHTML = `${litros.toFixed(1)} litros/dia`
+
+        //GET - executar uma formula diferente para o sexo selecionado
+        let lista = document.getElementById('atividade')
+        let valor = Number(lista.options[lista.selectedIndex].value)
+        console.log(valor)
+        if(document.getElementById('m').checked === true){
+            get = (66 + (13.7 * peso) + (5 * (altura * 100) - (6.8 * idade))) * valor
+        }
+        if(document.getElementById('f').checked === true){
+            get = (655 + (9.6 * peso) + (1.8 * (altura * 100) - (4.7 * idade))) * valor
+        }
+        document.getElementById('calorias').innerHTML = `${Math.floor(get)} calorias/dia`
     }
 
 
 }
 
 function limpar(){
-
+    document.getElementById('grafico').src = 'img/reset.png'
+    document.getElementById('imc').innerHTML = 'IMC'
+    document.getElementById('status').innerHTML = 'status'
+    document.getElementById('freq').innerHTML = 'FCM'
+    document.getElementById('calorias').innerHTML = 'calorias/dia'
+    document.getElementById('agua').innerHTML = 'litros/dia'
 }

@@ -4,6 +4,7 @@ HealthCalc
 - IMC (Índice de massa corporal) = peso / (altura * altura)
 - FCM (Frequência cardíaca máxima) = 208 - (0,7 * idade)
 - GET (Gasto energético total - calorias por dia) = tmb * valor
+- TMB (Taxa metabólica basal)
 - Água (litro por dia) = (peso * 35) / 1000
 
 
@@ -38,3 +39,35 @@ Fórmulas
 imc + Mostrador (indicativo do status do peso)
 Coração pulsando (FCM)
 get, litros
+
+
+const coracaoElement = document.querySelector('.coracao');
+coracaoElement.innerHTML = `<p style="position: absolute; transform: rotate(135deg); color: white;
+ left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(135deg); font-size: 12px;">${fcm.toFixed(0)} bpm</p>`
+
+
+
+        // FCM
+        fcm = 208 - (0.7 * idade)
+        document.getElementById("freq").innerHTML = fcm
+        // consumo de água
+        litros = (peso * 35) / 1000
+        document.getElementById("agua").innerHTML = `${litros.toFixed(1)} litros/dia`
+        //get >>>>>>>>
+        //Passo 1: Capturar o valor da lista(combobox)
+        let lista = document.getElementById('atividade')
+        let valor = Number(lista.options[lista.selectedIndex].value)
+        console.log(valor) // teste importante
+        //Passo 2: executar uma fórmula diferente para o sexo selecionado
+        if (document.getElementById('m').checked === true) {
+            //console.log("fórmula para homens")
+            get = (66 + (13.7 * peso) + (5 * (altura * 100) - (6.8 * idade))) * valor
+        }
+        if (document.getElementById('f').checked === true) {
+            //console.log("fórmula para mulheres")
+            get = (655 + (9.6 * peso) + (1.8 * (altura * 100) - (4.7 * idade))) * valor
+        }
+        // Passo 3: exibir o resultado
+        //(Math.floor converte para número inteiro)
+        document.getElementById('calorias').innerHTML = `${Math.floor(get)} calorias/dia`
+    }
